@@ -4,6 +4,9 @@ COPY package*.json ./
 
 RUN npm install
 
+RUN npm install -g @vue/cli
+RUN npm install scss
+RUN npm install sass-loader sass webpack
 
 
 COPY . .
