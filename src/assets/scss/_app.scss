@@ -1,0 +1,60 @@
+$font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
+  "Liberation Mono", "Courier New", monospace !default;
+$primary: #004926;
+$primary-invert: findColorInvert($primary);
+$secondary: #B78D44;
+$secondary-invert: findColorInvert($secondary);
+$approve: #177cda;
+$approve-invert: findColorInvert($approve);
+$colors: (
+  "white": (
+    $white,
+    $black
+  ),
+  "black": (
+    $black,
+    $white
+  ),
+  "light": (
+    $light,
+    $light-invert
+  ),
+  "dark": (
+    $dark,
+    $dark-invert
+  ),
+  "primary": (
+    $primary,
+    $primary-invert
+  ),
+  "info": (
+    $info,
+    $info-invert
+  ),
+  "success": (
+    $success,
+    $success-invert
+  ),
+  "warning": (
+    $warning,
+    $warning-invert
+  ),
+  "danger": (
+    $danger,
+    $danger-invert
+  ),
+  "approve": (
+    $approve,
+    $approve-invert
+  ),
+);
+
+$link: $primary;
+$link-invert: $primary-invert;
+$link-focus-border: $primary;
+@mixin background-cover() {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
