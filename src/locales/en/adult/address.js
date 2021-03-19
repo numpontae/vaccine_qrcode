@@ -1,0 +1,15 @@
+export default {
+  sameaddress: "Same with present address",
+  country: "COUNTRY *",
+  countryplace: "COUNTRY",
+  postcode: "POSTCODE",
+  postcodeplace: "POSTCODE",
+  province: "PROVINCE",
+  provinceplace: "PROVINCE",
+  subdistrict: "SUB DISTRICT",
+  subdistrictplace: "SUB DISTRICT",
+  district: "DISTRICT",
+  districtplace: "DISTRICT",
+  address: "ADDRESS",
+  addressplace: "ADDRESS",
+}

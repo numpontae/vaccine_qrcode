@@ -1,0 +1,31 @@
+export default {
+  label: "Pediatric New Patient Info",
+  pob: "PLACE OF BIRTH *",
+  pobplace: "PLACE OF BIRTH",
+  blood: "BLOOD GROUP *",
+  bloodplace: "BLOOD GROUP",
+  weight: "WEIGHT (GRAM) *",
+  weightplace: "WEIGHT (GRAM)",
+  length: "LENGTH (CM) *",
+  lengthplace: "LENGTH (CM)",
+  head: "HEAD CIRCUMFERENCE (CM) *",
+  headplace: "HEAD CIRCUMFERENCE (CM)",
+  delivery: [
+    "Delivery",
+    "SECTION APGAR'S SCORE {msg}"
+  ],
+  screen: "Newborn Screening",
+  tsh: "TSH (THYROID STIMULATING HORMONE) (OPTIONAL)",
+  pku: "PKU (PHENYLKETONURIA) (OPTIONAL)",
+  hearing: "HEARING TEST (OPTIONAL)",
+  problems: "Problems after birth ?",
+  developmental: "Any delay in developmental milestones ?",
+  allergies: "Allergies ?",
+  drug: "Drug",
+  food: "Food",
+  other: "Other",
+  illnesses: "PREVIOUS OR CURRENT SIGNIFICANT ILLNESSES",
+  medications: "CURRENT MEDICATIONS",
+  hospitalization: "Previous operations or hospitalization *",
+  
+}

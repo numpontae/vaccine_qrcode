@@ -2,48 +2,294 @@
   <div>
     <div style="margin-top: 6rem">
       <div class="head-box head-box-info">
-        <b-field grouped group-multiline>
-          <b-field
-            :type="{
-              'is-primary': !errors.has('national_id'),
-              'is-danger': errors.has('national_id'),
-            }"
-            label-position="on-border"
-            label="ID Card"
-            expanded
-          >
-            <b-input
-              name="national_id"
-              v-model="data.national_id"
-              placeholder="ID Card"
-              v-validate="'required'"
-            ></b-input>
-          </b-field>
-          <b-field
-            :type="{
-              'is-primary': !errors.has('site'),
-              'is-danger': errors.has('site'),
-            }"
-            label-position="on-border"
-            label="Site"
-            expanded
-          >
-            <b-select
-              name="site"
-              v-model="data.site"
-              placeholder="Site"
-              v-validate="'required'"
-            >
-              <option
-                v-for="option in site"
-                :value="option.desc"
-                :key="option.desc"
-              >
-                {{ option.desc }}
-              </option>
-            </b-select>
-          </b-field>
-        </b-field>
+        
+        <div class="columns is-mobile">
+                <div class="column">
+                  <b-field
+                    :label="$t('adult.patient.hn')"
+                    label-position="on-border"
+                    expanded
+                    :type="{
+                      'is-primary': !errors.has('p_hn'),
+                      'is-danger': errors.has('p_hn'),
+                    }"
+                  >
+                    <b-input
+                      v-model="result.hn"
+                      name="p_hn"
+                      v-validate="'required'"
+                      :placeholder="$t('adult.patient.hnplace')"
+                    ></b-input>
+                  </b-field>
+                </div>
+                <div class="column">
+                  <b-field
+                    :label="$t('adult.patient.rowid')"
+                    label-position="on-border"
+                    expanded
+                    :type="{
+                      'is-primary': !errors.has('p_rowid'),
+                      'is-danger': errors.has('p_rowid'),
+                    }"
+                  >
+                    <b-input
+                      v-model="result.rowid"
+                      name="p_rowid"
+                      v-validate="'required'"
+                      :placeholder="$t('adult.patient.rowidplace')"
+                    ></b-input>
+                  </b-field>
+                </div>
+              </div>
+        <div class="columns is-mobile">
+                <div class="column">
+                  <b-field
+                    :label="$t('adult.patient.title')"
+                    label-position="on-border"
+                    expanded
+                    :type="{
+                      'is-primary': !errors.has('title'),
+                      'is-danger': errors.has('title'),
+                    }"
+                  >
+                    <v-select
+                      v-model="result.title"
+                      :class="{
+                      'input is-primary': !errors.has('title'),
+                      'input is-danger': errors.has('title'),
+                    }"
+                      width="100%"
+                      name="title"
+                      :options="title"
+                      key="ID"
+                      value="ID"
+                      label="Desc"
+                      :reduce="Desc => Desc.ID"
+                      :placeholder="$t('adult.patient.titleplace')"
+                      v-validate="'required'"
+                      expanded
+                    >
+                    </v-select>
+                  </b-field>
+                </div>
+                <div class="column">
+                  <b-field
+                    :label="$t('adult.patient.firstname')"
+                    label-position="on-border"
+                    expanded
+                    :type="{
+                      'is-primary': !errors.has('p_firstname'),
+                      'is-danger': errors.has('p_firstname'),
+                    }"
+                  >
+                    <b-input
+                      v-model="result.firstname"
+                      name="p_firstname"
+                      v-validate="'required'"
+                      :placeholder="$t('adult.patient.firstnameplace')"
+                    ></b-input>
+                  </b-field>
+                </div>
+              </div>
+              <div class="columns is-mobile">
+                <div class="column">
+                  <b-field
+                    :label="$t('adult.patient.middlename')"
+                    label-position="on-border"
+                    expanded
+                    :type="{
+                      'is-primary': !errors.has('p_middlename'),
+                      'is-danger': errors.has('p_middlename'),
+                    }"
+                  >
+                    <b-input
+                      name="p_middlename"
+                      v-model="result.middlename"
+                      :placeholder="$t('adult.patient.middlenameplace')"
+                    ></b-input>
+                  </b-field>
+                </div>
+                <div class="column">
+                  <b-field
+                    :label="$t('adult.patient.lastname')"
+                    label-position="on-border"
+                    expanded
+                    :type="{
+                      'is-primary': !errors.has('p_lastname'),
+                      'is-danger': errors.has('p_lastname'),
+                    }"
+                  >
+                    <b-input
+                      v-model="result.lastname"
+                      v-validate="'required'"
+                      name="p_lastname"
+                      :placeholder="$t('adult.patient.lastnameplace')"
+                    ></b-input>
+                  </b-field>
+                </div>
+              </div>
+              <div class="columns is-mobile">
+                <!-- <div class="column">
+                  <b-field
+                    label-position="on-border"
+                    :label="$t('adult.patient.dob')"
+                    :type="{
+                      'is-primary': !errors.has('dob'),
+                      'is-danger': errors.has('dob'),
+                    }"
+                    expanded
+                  >
+                    <b-datepicker
+                      :placeholder="$t('adult.patient.dobplace')"
+                      :min-date="minDate"
+                      :max-date="maxDate"
+                      :mobile-native="true"
+                      :date-formatter="(date) => date.toLocaleDateString('en-GB')"
+                      icon="calendar-today"
+                      v-model="result.patient_info.dob"
+                      v-validate="'required'"
+                      name="dob"
+                    >
+                    </b-datepicker>
+                  </b-field>
+                </div> -->
+                <!-- <div class="column">
+                  <b-field
+                    :label="$t('adult.patient.gender')"
+                    label-position="on-border"
+                    expanded
+                    :type="{
+                      'is-primary': !errors.has('gender'),
+                      'is-danger': errors.has('gender'),
+                    }"
+                  >
+                    <v-select
+                      v-model="result.gender"
+                      :class="{
+                      'input is-primary': !errors.has('gender'),
+                      'input is-danger': errors.has('gender'),
+                    }"
+                      width="100%"
+                      name="gender"
+                      :options="gender"
+                      key="ID"
+                      value="ID"
+                      label="Desc"
+                      :reduce="Desc => Desc.ID"
+                      :placeholder="$t('adult.patient.genderplace')"
+                      v-validate="'required'"
+                      expanded
+                    >
+                    </v-select>
+                  </b-field>
+                </div> -->
+              </div>
+              <div class="columns is-mobile">
+                <!-- <div class="column">
+                  <b-field
+                    :label="$t('adult.nationality')"
+                    label-position="on-border"
+                    expanded
+                    :type="{
+                      'is-primary': !errors.has('nationality'),
+                      'is-danger': errors.has('nationality'),
+                    }"
+                  >
+                    <v-select
+                      v-model="result.patient_info.nationality"
+                      :class="{
+                      'input is-primary': !errors.has('nationality'),
+                      'input is-danger': errors.has('nationality'),
+                    }"
+                      width="100%"
+                      name="nationality"
+                      :options="nationality"
+                      key="ID"
+                      value="ID"
+                      label="Desc"
+                      :reduce="Desc => Desc.ID"
+                      :placeholder="$t('adult.patient.nationalityplace')"
+                      @input="(option) => selectNationality(option)"
+                      v-validate="'required'"
+                      expanded
+                    >
+                    </v-select>
+                  </b-field>
+                </div> -->
+                <div class="column">
+                  <b-field
+                    :label="$t('adult.patient.religion')"
+                    label-position="on-border"
+                    expanded
+                    :type="{
+                      'is-primary': !errors.has('religion'),
+                      'is-danger': errors.has('religion'),
+                    }"
+                  >
+                    <v-select
+                      v-model="result.religion"
+                      :class="{
+                      'input is-primary': !errors.has('religion'),
+                      'input is-danger': errors.has('religion'),
+                    }"
+                      width="100%"
+                      name="religion"
+                      :options="religion"
+                      key="ID"
+                      value="ID"
+                      label="Desc"
+                      :reduce="Desc => Desc.ID"
+                      :placeholder="$t('adult.patient.religionplace')"
+                      v-validate="'required'"
+                      expanded
+                    >
+                    </v-select>
+                  </b-field>
+                </div>
+              </div>
+              <div class="columns is-mobile">
+                <div class="column">
+                  <b-field
+                    type="is-primary"
+                    :label="$t('adult.patient.passport')"
+                    label-position="on-border"
+                    expanded
+                  >
+                    <b-input
+                      name="passport"
+                      
+                      v-model="result.passport"
+                      :placeholder="$t('adult.patient.passportplace')"
+                      
+                      expanded
+                    ></b-input>
+                  </b-field>
+                </div>
+                <div class="column">
+                  <b-field
+                    :type="{
+                        'is-primary': !errors.has('national_id'),
+                        'is-danger': errors.has('national_id'),
+                    }"
+                    :label="$t('adult.patient.nationalid')"
+                    label-position="on-border"
+                    expanded
+                  >
+                    <b-input
+                      
+                      maxlength="13"
+                      name="national_id"
+                      v-model="result.national_id"
+                      :placeholder="$t('adult.patient.nationalidplace')"
+                      
+                      expanded
+                    ></b-input>
+                  </b-field>
+                </div>
+              </div>
+            
+                
+              
       </div>
 
       <div class="head-box head-box-patient">
@@ -302,6 +548,7 @@
 
 <script>
 import CryptoJS from "crypto-js";
+import { mapGetters } from "vuex";
 
 export default {
   name: "Index",
@@ -345,6 +592,25 @@ export default {
       maxDate: new Date(today.getFullYear(), today.getMonth(), today.getDate()),
       perPage: 15,
       total: 0,
+      result: {
+        rowid: null,
+        hn: null,
+        national_id: null,
+        passport: null,
+        title: null,
+        firstname: null,
+        lastname: null,
+        dob: null,
+        gender: null,
+        nationality: null,
+        religion: null,
+        country: null,
+        postcode: null,
+        province: null,
+        district: null,
+        subdistrict: null,
+        address: null
+      },
       site: [
         {
           id: "12",
@@ -488,9 +754,25 @@ export default {
       ],
     };
   },
-
+  computed: {
+    ...mapGetters("patient", {
+      title: "title",
+      gender: "gender",
+      nationality: "nationality",
+      country: "country",
+      religion: "religion",
+    })
+  },
   created() {
-    console.log(this.locale);
+    this.$store.dispatch("patient/getTitle", localStorage.getItem("locale") == "th" ? "th" : "en");
+    this.$store.dispatch("patient/getGender", localStorage.getItem("locale"));
+    this.$store.dispatch("patient/getNationality", localStorage.getItem("locale") == "th" ? "th" : "en");
+    this.$store.dispatch("patient/getReligion", localStorage.getItem("locale") == "th" ? "th" : "en");
+    this.$store.dispatch("patient/getCountry", localStorage.getItem("locale") == "th" ? "th" : "en");
+  },
+  mounted() {
+    this.handleData(this.$route.query.id)
+    
   },
   methods: {
     async onSubmit() {
@@ -520,7 +802,9 @@ export default {
               });
 
               let hash = CryptoJS.algo.SHA256.create();
-              hash.update(consent_form_test.toString());
+              
+              hash.update(this.data.national_id);
+              // hash.update(consent_form_test.toString());
               let consentHash = hash.finalize().toString();
               hash = CryptoJS.algo.SHA256.create();
 
@@ -556,6 +840,30 @@ export default {
     clearPatientSignature() {
       this.$refs.patientSignaturePad.clearSignature();
     },
+    async handleData(rowIdHash) {
+      this.isLoading = true;
+
+      let data = await this.$http.get(`/api/v1/patient/info?rowIdHash=${rowIdHash}`);
+      this.result.rowid = data.data.RowID;
+      this.result.hn = data.data.HN;
+      this.result.national_id = data.data.NationalID,
+      this.result.passport = data.data.Passport,
+      this.result.title = data.data.Title,
+      this.result.firstname = data.data.FirstName,
+      this.result.lastname = data.data.LastName,
+      this.result.dob = data.data.DOB,
+      this.result.gender = data.data.Gender,
+      this.result.nationality = data.data.Nationality,
+      this.result.religion = data.data.Religion,
+      this.result.country = data.data.Country,
+      this.result.postcode = data.data.Postcode,
+      this.result.province = data.data.Province,
+      this.result.district = data.data.District,
+      this.result.subdistrict = data.data.Subdistrict,
+      this.result.address = data.data.Address
+      console.log(this.result)
+      this.isLoading = false;
+    }
   },
 };
 </script>
