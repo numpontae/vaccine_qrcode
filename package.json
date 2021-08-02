@@ -1,0 +1,77 @@
+{
+  "name": "vaccine_registration",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "@mdi/font": "^5.2.45",
+    "axios": "^0.19.2",
+    "buefy": "^0.8.20",
+    "core-js": "^3.6.4",
+    "crypto-js": "^4.0.0",
+    "device-uuid": "^1.0.4",
+    "jdbc": "^0.7.3",
+    "lodash": "^4.17.15",
+    "moment": "^2.29.1",
+    "network": "^0.5.0",
+    "network-list": "^1.1.5",
+    "qrcode": "^1.4.4",
+    "randomstring": "^1.2.1",
+    "sass": "^1.32.8",
+    "scss": "^0.2.4",
+    "v-mask": "^2.2.4",
+    "vee-validate": "^2.2.15",
+    "vue": "^2.6.11",
+    "vue-barcode": "^1.3.0",
+    "vue-date-dropdown": "^1.0.5",
+    "vue-i18n": "^8.21.0",
+    "vue-input-mask": "0.0.11",
+    "vue-pdf": "^4.2.0",
+    "vue-qrcode": "^0.4.0",
+    "vue-router": "^3.1.6",
+    "vue-select": "^3.10.8",
+    "vue-signature-pad": "^2.0.2",
+    "vue-unique-id": "^3.1.5",
+    "vuetify": "^2.3.21",
+    "vuex": "^3.1.3",
+    "webpack": "^4.46.0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.3.0",
+    "@vue/cli-plugin-eslint": "~4.3.0",
+    "@vue/cli-plugin-router": "~4.3.0",
+    "@vue/cli-plugin-vuex": "~4.3.0",
+    "@vue/cli-service": "~4.3.0",
+    "@vue/eslint-config-prettier": "^6.0.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-vue": "^6.2.2",
+    "node-sass": "^4.12.0",
+    "sass-loader": "^8.0.2",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
