@@ -58,7 +58,6 @@ export default {
   methods: {
     async handleLogin() {
       try {
-        console.log('Log');
         this.isLoading = true
         // await this.$store.dispatch('auth/login', {
         //   username: this.username,

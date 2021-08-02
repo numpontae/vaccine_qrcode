@@ -1,4 +1,4 @@
-# consent_hash_test
+# vaccine_token
 
 ## Project setup
 ```
