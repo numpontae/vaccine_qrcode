@@ -14,7 +14,6 @@
     "core-js": "^3.6.4",
     "crypto-js": "^4.0.0",
     "device-uuid": "^1.0.4",
-    "jdbc": "^0.7.3",
     "lodash": "^4.17.15",
     "moment": "^2.29.1",
     "network": "^0.5.0",
