@@ -90,6 +90,7 @@ export default {
           };
           this.$http.post(`/api/v1/patient/posttoken`, value);
           this.codeValue = `${window.location.href}?page=Register&token=` + this.codeValue
+          console.log(this.codeValue)
 
     },
     async GoToLink() {
