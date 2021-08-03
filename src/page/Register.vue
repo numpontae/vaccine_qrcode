@@ -441,7 +441,7 @@ export default {
         token: this.$route.query.token
       }
       this.$http.post(`/api/v1/patient/postregister`, body);
-            window.location.href = `http://localhost:8080/Success`
+            window.location.href = `window.location.href/Success`
           }
       })
       
