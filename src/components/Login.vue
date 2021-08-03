@@ -1,17 +1,84 @@
 <template>
   <div
     id="login"
-    class="has-text-centered has-text-justified"
     style="padding: 12rem;"
   >
-    <section>
-      <div class="box" style="margin: auto; width: 100%; max-width: 482px;">
+      <div class="login-box">
         <h1 class="is-size-3" style="margin-bottom: 1rem;">
           LOG IN
           <span style="font-weight: bold; color: #007065;"></span>
         </h1>
+        <div
+            class="column"
+            style="max-width: 100%; min-width: 100%; padding: 2% 5% 2% 5%"
+          >
+          <p
+              :class="{
+                'font-p': !errors.has('firstname'),
+                'is-size-6': true,
+                'has-text-danger': errors.has('firstname'),
+              }"
+              style="text-align: left; margin-bottom: 0.75rem"
+            >
+              Username
+            </p>
+            <b-field
+              :type="{
+                'is-primary': !errors.has('username'),
+                'is-danger': errors.has('username'),
+              }"
+              
+              :placeholder="'Username'"
+              label-position="on-border"
+              expanded
+            >
+              <b-input
+                style="max-width: 100%; min-width: 100%"
+                name="username"
+                v-validate="'required'"
+                v-model="password"
+                :placeholder="'Username'"
+                expanded
+              ></b-input>
+            </b-field>
+          </div>
 
-        <b-field label="Username" label-position="on-border">
+          <div
+            class="column"
+            style="max-width: 100%; min-width: 100%; padding: 2% 5% 2% 5%"
+          >
+          <p
+              :class="{
+                'font-p': !errors.has('firstname'),
+                'is-size-6': true,
+                'has-text-danger': errors.has('firstname'),
+              }"
+              style="text-align: left; margin-bottom: 0.75rem"
+            >
+              Username
+            </p>
+            <b-field
+              :type="{
+                'is-primary': !errors.has('username'),
+                'is-danger': errors.has('username'),
+              }"
+              
+              :placeholder="'Username'"
+              label-position="on-border"
+              expanded
+            >
+              <b-input
+                style="max-width: 100%; min-width: 100%"
+                name="username"
+                v-validate="'required'"
+                v-model="password"
+                :placeholder="'Username'"
+                expanded
+              ></b-input>
+            </b-field>
+          </div>
+        
+        <!-- <b-field label="Username" label-position="on-border">
           <b-input
             placeholder="Username Input"
             size="is-medium"
@@ -28,14 +95,14 @@
             password-reveal
           >
           </b-input>
-        </b-field>
+        </b-field> -->
         <div style="margin-top: 1.5rem;" class="buttons">
           <b-button @click="handleLogin()" type="is-primary" expanded
             >Login</b-button
           >
         </div>
       </div>
-    </section>
+  
     <b-loading
       :is-full-page="isFullPage"
       :active.sync="isLoading"
@@ -59,7 +126,7 @@ export default {
     async handleLogin() {
       try {
         this.isLoading = true
-        if(this.username != '1sH5Or24Hb' && this.password != '13Fed5vs41')
+        if(this.username != 'vaccine-svnh' || this.password != '13Fed5vs41')
         {
           this.isLoading = false
           this.$buefy.snackbar.open({
@@ -99,5 +166,23 @@ export default {
   background-color: #bfa984;
   background-repeat: no-repeat;
   height: 100vh;
+}
+.login-box {
+  min-width: 80%;
+  max-width: 80%;
+  align-self: center;
+  align-content: center;
+  align-items: center;
+  padding: 1rem 1rem 1.5rem 1rem;
+  margin: 0% auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #007065;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+  color: rgba(0, 0, 0, 0.7);
+  box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
 }
 </style>
