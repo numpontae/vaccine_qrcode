@@ -380,7 +380,7 @@ export default {
         penColor: "black",
         backgroundColor: "white",
       },
-      linkexpired: false,
+      linkexpired: true,
       result: {
         hn: null,
         firstname: null,
@@ -411,7 +411,8 @@ export default {
         token : token
       }
       let data = await this.$http.post(`/api/v1/patient/checktokenexpire`, body);
-      if(data.data.length > 0)
+      console.log(data)
+      if(data.data[0] > 0)
       {
         this.linkexpired = false
       }else
