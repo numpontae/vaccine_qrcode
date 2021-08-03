@@ -36,7 +36,7 @@
                 style="max-width: 100%; min-width: 100%"
                 name="username"
                 v-validate="'required'"
-                v-model="password"
+                v-model="username"
                 :placeholder="'Username'"
                 expanded
               ></b-input>

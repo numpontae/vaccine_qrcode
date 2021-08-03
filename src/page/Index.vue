@@ -89,7 +89,7 @@ export default {
             randomstrback: randomstrback
           };
           this.$http.post(`/api/v1/patient/posttoken`, value);
-          this.codeValue = `${window.location.href}Register?token=` + this.codeValue
+          this.codeValue = `${window.location.href}?page=Register&token=` + this.codeValue
 
     },
     async GoToLink() {

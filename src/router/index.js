@@ -55,8 +55,14 @@ router.beforeEach((to, from, next) => {
     console.log(from)
     next({ name: `Login`})
   }
-  console.log(from)
-  console.log(to)
+  if (to.query.page == 'Register')
+  {
+    next({ name: `Register`, query: {token: to.query.token}})
+  }
+  if (to.query.page == 'Success')
+  {
+    next({ name: `Success`})
+  }
   next()
   
 })
