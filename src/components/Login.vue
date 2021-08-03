@@ -59,30 +59,21 @@ export default {
     async handleLogin() {
       try {
         this.isLoading = true
-        // await this.$store.dispatch('auth/login', {
-        //   username: this.username,
-        //   password: this.password,
-        // }) ;
-        
-        const data = await this.$http.post('/api/v1/auth/login', {
-          username: this.username,
-          password: this.password,
-        }) ;
-        if(data.data.status != "200")
+        if(this.username != '1sH5Or24Hb' && this.password != '13Fed5vs41')
         {
           this.isLoading = false
           this.$buefy.snackbar.open({
           duration: 3000,
           message:
-            data.data.message,
+            'User and Password Invalid',
             type: 'is-danger',
             position: 'is-top',
         })
         }else {
           this.isLoading = true
-          localStorage.setItem("User-LogIn",data.data.token);
-          localStorage.setItem("token",data.data.token);
-          this.$router.push({ name: 'registero1' })
+          localStorage.setItem("logintoken",'login');
+          localStorage.setItem("token",'login');
+          this.$router.push({ name: 'Home' })
           location.reload();
         }
         

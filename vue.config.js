@@ -1,9 +1,15 @@
-const fs = require('fs');
+
 
 module.exports = {
   publicPath : './',
   configureWebpack: {
     devServer: {
+      // https: true,
+    //   https: {
+    //     key: fs.readFileSync('./src/certification/server.key'),
+    //     cert: fs.readFileSync('./src/certification/server.cert'),
+    //     ca: fs.readFileSync('./src/certification/CER - CRT Files/My_CA_Bundle.ca-bundle'),
+    // },
       headers: { "Access-Control-Allow-Origin": "*" }
     }
   },
