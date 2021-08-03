@@ -30,6 +30,7 @@
               expanded
             >
               <b-input
+                autocomplete="off"
                 style="max-width: 100%; min-width: 100%"
                 name="firstname"
                 v-validate="'required'"
@@ -64,6 +65,7 @@
               expanded
             >
               <b-input
+                autocomplete="off"
                 style="max-width: 100%; min-width: 100%"
                 name="lastname"
                 v-validate="'required'"
@@ -165,6 +167,7 @@
               expanded
             >
               <b-input
+                autocomplete="off"
                 style="max-width: 100%; min-width: 100%"
                 name="mobilephone"
                 v-validate="'required'"
@@ -199,6 +202,7 @@
               expanded
             >
               <b-input
+                autocomplete="off"
                 style="max-width: 100%; min-width: 100%"
                 name="hn"
                 v-model="result.hn"

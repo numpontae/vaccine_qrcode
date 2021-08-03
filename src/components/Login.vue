@@ -1,10 +1,9 @@
 <template>
   <div
-    id="login"
-    style="padding: 12rem;"
+    
   >
-      <div class="login-box">
-        <h1 class="is-size-3" style="margin-bottom: 1rem;">
+      <div class="login-box" style="margin-top: 2rem;margin-bottom: 2rem">
+        <h1 class="is-size-3" style="margin-top: 3rem;margin-bottom: 2rem;">
           LOG IN
           <span style="font-weight: bold; color: #007065;"></span>
         </h1>
@@ -14,9 +13,9 @@
           >
           <p
               :class="{
-                'font-p': !errors.has('firstname'),
+                'font-p': !errors.has('username'),
                 'is-size-6': true,
-                'has-text-danger': errors.has('firstname'),
+                'has-text-danger': errors.has('username'),
               }"
               style="text-align: left; margin-bottom: 0.75rem"
             >
@@ -33,6 +32,7 @@
               expanded
             >
               <b-input
+                autocomplete="off"
                 style="max-width: 100%; min-width: 100%"
                 name="username"
                 v-validate="'required'"
@@ -68,6 +68,7 @@
               expanded
             >
               <b-input
+                autocomplete="off"
                 style="max-width: 100%; min-width: 100%"
                 name="password"
                 v-validate="'required'"
@@ -97,7 +98,7 @@
           >
           </b-input>
         </b-field> -->
-        <div style="margin-top: 1.5rem;" class="buttons">
+        <div style="margin-top: 1.5rem;margin-bottom: 3rem;" class="buttons">
           <b-button @click="handleLogin()" type="is-primary" expanded
             >Login</b-button
           >
@@ -169,6 +170,7 @@ export default {
   height: 100vh;
 }
 .login-box {
+  background-color: #bfa984;
   min-width: 80%;
   max-width: 80%;
   align-self: center;

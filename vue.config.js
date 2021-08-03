@@ -4,7 +4,6 @@ module.exports = {
   publicPath : './',
   configureWebpack: {
     devServer: {
-      https: true,
       
     //   https: {
     //     key: fs.readFileSync('./src/certification/star.samitivejhospitals.com.bundle.crt'),

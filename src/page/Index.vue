@@ -41,7 +41,7 @@ export default {
   data() {
     return {
       codeValue: "",
-      countDown : 30
+      countDown : 60
     };
   },
   components: {
