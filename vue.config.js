@@ -4,7 +4,6 @@ module.exports = {
   publicPath : './',
   configureWebpack: {
     devServer: {
-      https: true,
       headers: { "Access-Control-Allow-Origin": "*" }
     }
   },
