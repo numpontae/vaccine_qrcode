@@ -28,13 +28,6 @@
         </div>
       </div>
       {{ countDown }} Second
-      <div class="columns is-desktop">
-        <div class="column">
-          <b-button type="is-primary" @click="GoToLink()"
-            >Go To Link</b-button
-          >
-        </div>
-      </div>
     </div>
   </div>
 </template>
@@ -48,7 +41,7 @@ export default {
   data() {
     return {
       codeValue: "",
-      countDown : 10
+      countDown : 30
     };
   },
   components: {
@@ -69,7 +62,7 @@ export default {
                 } else 
                 {
                   this.GenerateQRCode()
-                  this.countDown = 10
+                  this.countDown = 30
                   this.countDownTimer()
                 }
             },
