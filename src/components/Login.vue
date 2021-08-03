@@ -49,31 +49,32 @@
           >
           <p
               :class="{
-                'font-p': !errors.has('firstname'),
+                'font-p': !errors.has('password'),
                 'is-size-6': true,
-                'has-text-danger': errors.has('firstname'),
+                'has-text-danger': errors.has('password'),
               }"
               style="text-align: left; margin-bottom: 0.75rem"
             >
-              Username
+              Password
             </p>
             <b-field
               :type="{
-                'is-primary': !errors.has('username'),
-                'is-danger': errors.has('username'),
+                'is-primary': !errors.has('password'),
+                'is-danger': errors.has('password'),
               }"
               
-              :placeholder="'Username'"
+              :placeholder="'Password'"
               label-position="on-border"
               expanded
             >
               <b-input
                 style="max-width: 100%; min-width: 100%"
-                name="username"
+                name="password"
                 v-validate="'required'"
                 v-model="password"
-                :placeholder="'Username'"
-                expanded
+                :placeholder="'password'"
+                type="password"
+                password-reveal
               ></b-input>
             </b-field>
           </div>
