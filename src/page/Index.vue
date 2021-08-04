@@ -68,7 +68,7 @@ export default {
             },
     async GenerateQRCode() {
       let current = new Date();
-      let tokendate = new Date(current.getTime() + 1*60000);
+      let tokendate = new Date(current.getTime() + 2*60000);
       let randomstrfont = randomstring.generate({
         length: 12,
         charset: "alphabetic",
