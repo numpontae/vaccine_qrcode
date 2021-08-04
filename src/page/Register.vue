@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div style="margin-top: 0rem">
+    <div style="margin-top: 1rem">
       <p style="font-size:100px; color:red" v-if="linkexpired">
         Link expired !
       </p>
@@ -167,10 +167,11 @@
               expanded
             >
               <b-input
+                :maxlength="10"
                 autocomplete="off"
                 style="max-width: 100%; min-width: 100%"
                 name="mobilephone"
-                v-validate="'required'"
+                v-validate="'required|mobilephone'"
                 v-model="result.mobilephone"
                 :placeholder="'เบอร์โทรศัพท์มือถือ / Mobile Phone No.'"
                 expanded
@@ -202,6 +203,7 @@
               expanded
             >
               <b-input
+                type="number"
                 autocomplete="off"
                 style="max-width: 100%; min-width: 100%"
                 name="hn"
@@ -402,6 +404,14 @@ export default {
   computed: {
   },
   created() {
+    this.$validator.extend("mobilephone", {
+      getMessage: (field) => "At least one " + field + " needs to be checked.",
+      validate: (value) => {
+        if (value != "." && value.length != 10) return false;
+        if (value.length == 10 && value.includes(".")) return false;
+        return true;
+      },
+    });
     // this.$store.dispatch("patient/getTitle", localStorage.getItem("locale") == "th" ? "th" : "en");
     // this.$store.dispatch("patient/getGender", localStorage.getItem("locale"));
     // this.$store.dispatch("patient/getNationality", localStorage.getItem("locale") == "th" ? "th" : "en");
@@ -414,8 +424,16 @@ export default {
       let body = {
         token : token
       }
-      let data = await this.$http.post(`/api/v1/patient/checktokenexpire`, body);
-      console.log(data)
+      let tok = atob(token)
+      let dd = new Date()
+      let tokensplit = tok.split(" ")
+      let tokendate = tokensplit[1] + " " + tokensplit[2]
+      if (dd.toLocaleString() > tokendate)
+      {
+        this.linkexpired = true
+      }else
+      {
+        let data = await this.$http.post(`/api/v1/patient/checktokenexpire`, body);
       if(data.data[0] > 0)
       {
         this.linkexpired = false
@@ -423,6 +441,8 @@ export default {
       {
         this.linkexpired = true
       }
+      }
+      
       
     },
     async Register() {
@@ -435,6 +455,7 @@ export default {
             !this.errors.has("mobilephone")
           )
           {
+            
             let body = {
         Firstname: this.result.firstname,
         Lastname: this.result.lastname,

@@ -1,7 +1,7 @@
 
 <template>
   <div id="app">
-    <div class="head-box head-box-generate">
+    <div class="head-box head-box-generate" style="margin-top: 1rem">
       <p style="font-size:20px; font-weight: bold; color:green">
               แบบสำรวจความสนใจวัคซีนทางเลือก Moderna ไตรมาสที่ 2 ปี 2565
       </p>
@@ -62,12 +62,13 @@ export default {
                 } else 
                 {
                   this.GenerateQRCode()
-                  this.countDown = 30
+                  this.countDown = 60
                   this.countDownTimer()
                 }
             },
     async GenerateQRCode() {
       let current = new Date();
+      let tokendate = new Date(current.getTime() + 1*60000);
       let randomstrfont = randomstring.generate({
         length: 12,
         charset: "alphabetic",
@@ -78,10 +79,7 @@ export default {
       });
       this.codeValue =
         window.btoa(
-          `${randomstrfont} ${current.getDate()}/${
-            current.getMonth() + 1
-          }/${current.getFullYear()} ${current.getTime()} ${randomstrback}`
-        
+          `${randomstrfont} ${tokendate.toLocaleString()} ${randomstrback}`
       );
       let value = {
             token : this.codeValue,
