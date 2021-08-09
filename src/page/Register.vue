@@ -1,10 +1,10 @@
 <template>
   <div>
     <div style="margin-top: 1rem">
-      <p style="font-size: 100px; color: red" v-if="linkexpired">
+      <p style="font-size: 100px; color: red" v-if="linkexpired == true">
         Link expired !
       </p>
-      <div class="head-box head-box-info" v-if="!linkexpired">
+      <div class="head-box head-box-info" v-if="linkexpired == false">
         <div
           class="column"
           style="max-width: 100%; min-width: 100%; padding: 2% 5% 2% 5%"
@@ -373,6 +373,7 @@
 <script>
 import Vue from "vue";
 import InputMask from "vue-input-mask";
+import jwt_decode from "jwt-decode";
 
 Vue.component("input-mask", InputMask);
 export default {
@@ -383,7 +384,7 @@ export default {
         penColor: "black",
         backgroundColor: "white",
       },
-      linkexpired: true,
+      linkexpired: null,
       result: {
         hn: null,
         firstname: null,
@@ -416,27 +417,49 @@ export default {
   },
   methods: {
     async checkTokenExpire(token) {
-      console.log("1111");
       let body = {
         token: token,
       };
-      let tok = atob(token);
-      let dd = new Date();
-      let tokensplit = tok.split(" ");
-      let tokendate = tokensplit[1] + " " + tokensplit[2];
-      if (dd.toLocaleString() > tokendate) {
-        this.linkexpired = true;
-      } else {
-        let data = await this.$http.post(
-          `/api/v1/patient/checktokenexpire`,
-          body
-        );
-        if (data.data[0] > 0) {
-          this.linkexpired = false;
-        } else {
+
+var decoded = jwt_decode(token);
+ 
+console.log(decoded);
+      // let tok = atob(token);
+      // let dd = new Date();
+      // let tokensplit = tok.split(" ");
+      // let tokendate = tokensplit[1] + " " + tokensplit[2];
+      var jwt = require("jsonwebtoken");
+      jwt.verify(token, "Ar3b1Op", async (err, decoded) => {
+        if (err) {
+          console.log(err);
           this.linkexpired = true;
+        } else {
+          console.log(decoded)
+          let data = await this.$http.post(
+            `/api/v1/patient/checktokenexpire`,
+            body
+          );
+
+          if (data.data[0] > 0) {
+            this.linkexpired = false;
+          } else {
+            this.linkexpired = true;
+          }
         }
-      }
+      });
+      // if (dd.toLocaleString() > tokendate) {
+      //   this.linkexpired = true;
+      // } else {
+      //   let data = await this.$http.post(
+      //     `/api/v1/patient/checktokenexpire`,
+      //     body
+      //   );
+      //   if (data.data[0] > 0) {
+      //     this.linkexpired = false;
+      //   } else {
+      //     this.linkexpired = true;
+      //   }
+      // }
     },
     async Register() {
       this.$validator.validateAll().then(async () => {
@@ -457,7 +480,7 @@ export default {
             token: this.$route.query.token,
           };
           this.$http.post(`/api/v1/patient/postregister`, body);
-          window.location.href = `/Success`;
+          this.$router.push({ name: "Success", query: { page: "Success" } });
         }
       });
     },

@@ -16,7 +16,9 @@ Vue.component("v-select", vSelect);
 Vue.use(Buefy);
 Vue.config.productionTip = false
 Vue.prototype.$http = axios;
-Vue.use(VeeValidate);
+Vue.use(VeeValidate, {
+  fieldsBagName: 'vvFields'
+});
 Vue.use(VueSignature);
 Vue.use(VueI18n);
 

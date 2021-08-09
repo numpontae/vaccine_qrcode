@@ -5,35 +5,42 @@ import Home from "@/page/Index";
 import Register from "@/page/Register";
 import Success from "@/page/Success";
 import Login from "@/components/Login";
+import ExportFile from "@/page/ExportFile";
 
 
 Vue.use(VueRouter);
 
 const routes = [
-  {
-    path: "/",
-    name: "Home",
-    component: Home,
-    meta: { guest: false }
-  },
-  {
-    path: "/Register",
-    name: "Register",
-    component: Register,
-    meta: { guest: true }
-  },
-  {
-    path: "/Success",
-    name: "Success",
-    component: Success,
-    meta: { guest: true }
-  },
+  // {
+  //   path: "/",
+  //   name: "Home",
+  //   component: Home,
+  //   meta: { guest: false }
+  // },
+  // {
+  //   path: "/Register",
+  //   name: "Register",
+  //   component: Register,
+  //   meta: { guest: true }
+  // },
+  // {
+  //   path: "/Success",
+  //   name: "Success",
+  //   component: Success,
+  //   meta: { guest: true }
+  // },
   {
     path: "/Login",
     name: "Login",
     component: Login,
     meta: { guest: true }
-  }
+  },
+  {
+    path: "/",
+    name: "Home",
+    component: ExportFile,
+    meta: { guest: false }
+  },
 ];
 
 const router = new VueRouter({
@@ -55,14 +62,14 @@ router.beforeEach((to, from, next) => {
     console.log(from)
     next({ name: `Login`})
   }
-  if (to.query.page == 'Register')
-  {
-    next({ name: `Register`, query: {token: to.query.token}})
-  }
-  if (to.query.page == 'Success')
-  {
-    next({ name: `Success`})
-  }
+  // if (to.query.page == 'Register')
+  // {
+  //   next({ name: `Register`, query: {token: to.query.token}})
+  // }
+  // if (to.query.page == 'Success')
+  // {
+  //   next({ name: `Success`})
+  // }
   next()
   
 })
